@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas's Takeaway Café | Exclusive Experience</title>
+    <style>
+        :root {
+            --primary-brown: #3b271a;
+            --accent-green: #2c4a3e;
+            --pure-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --text-light: #f4f1ea;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-color: var(--primary-brown);
+        }
+
+        /* Video Background */
+        .bg-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.45) contrast(1.1);
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 74, 62, 0.65), rgba(59, 39, 26, 0.75));
+            z-index: -1;
+        }
+
+        /* Transparent Liquid Glass Floating Elements */
+        .liquid-glass-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-blob {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            animation: floatBlob 12s ease-in-out infinite alternate;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .blob-1 {
+            width: 320px;
+            height: 320px;
+            top: -50px;
+            left: -50px;
+            animation-duration: 15s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            right: -30px;
+            animation-duration: 18s;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            50% { transform: translateY(25px) translateX(20px) scale(1.05); }
+            100% { transform: translateY(-20px) translateX(-15px) scale(0.95); }
+        }
+
+        /* Main Wrapper & Layout */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Luxury Glass Hero Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: fadeInCard 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d1bfa7;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .glass-card h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--pure-white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Info List based on provided details */
+        .info-list {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: left;
+            display: inline-block;
+            background: rgba(44, 74, 62, 0.3);
+            padding: 20px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Interactive Ultra-Glossy Button */
+        .interactive-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        .interactive-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: var(--pure-white);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(44, 74, 62, 0.5);
+        }
+
+        /* Luxury Modal System */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(35, 23, 15, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: rgba(44, 74, 62, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 28px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            text-align: left;
+            animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-content h2 {
+            color: var(--pure-white);
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+
+        .modal-sub {
+            color: #d1bfa7;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .modal-content input, .modal-content select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 6px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-content input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-content input:focus, .modal-content select:focus {
+            border-color: var(--pure-white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-content select option {
+            background: var(--accent-green);
+            color: var(--pure-white);
+        }
+
+        /* Generated Slip Styling */
+        .slip-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px dashed #3b271a;
+            padding: 20px;
+            border-radius: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #3b271a;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            white-space: pre-line;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .modal-actions {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .modal-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: var(--pure-white);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer info */
+        .site-footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background Template -->
+    <div class="bg-video-container">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="ScreenRecording_08-09-2026 05-30-15_1.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Transparent Liquid Glass Floating Elements -->
+    <div class="liquid-glass-container">
+        <div class="floating-blob blob-1"></div>
+        <div class="floating-blob blob-2"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <div class="brand-subtitle">Lucas's Takeaway Cafe</div>
+            <h1>Where good mornings begin</h1>
+            
+            <ul class="info-list">
+                <li>Coffee - Toasties - Cold drinks</li>
+                <li>Mon-Fri: 7am-3pm | Sat & Sun: 8am-3pm</li>
+                <li>Snap, sip & tag us @lucastakeawaycafe</li>
+            </ul>
+
+            <div>
+                <button class="interactive-btn" onclick="openBookingModal()">Book an Appointment</button>
+            </div>
+
+            <div class="site-footer">
+                <p>Exclusive Artisan Experience</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment & Slip Generation Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <h2>Reserve Your Slot</h2>
+            <p class="modal-sub">Secure your time at Lucas's Takeaway Cafe</p>
+            
+            <label>Your Name:</label>
+            <input type="text" id="clientName" placeholder="Enter your full name">
+
+            <label>Select Date:</label>
+            <input type="date" id="appDate">
+
+            <label>Select Time Slot:</label>
+            <select id="appTime">
+                <option value="07:00 AM">07:00 AM</option>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+            </select>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="generateSlip()">Confirm & Generate Slip</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Slip Modal -->
+    <div class="modal" id="slipModal">
+        <div class="modal-content">
+            <h2>Booking Confirmed</h2>
+            <p class="modal-sub">Screenshot or save your confirmation slip below:</p>
+            
+            <div class="slip-box" id="slipText"></div>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="finishBooking()">Done / Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function generateSlip() {
+            const name = document.getElementById('clientName').value || "Valued Client";
+            const date = document.getElementById('appDate').value || "Today";
+            const time = document.getElementById('appTime').value;
+
+            const slipContent = 
+`----------------------------------------
+      LUCA'S CAFE APPOINTMENT SLIP     
+----------------------------------------
+Client Name : ${name}
+Date        : ${date}
+Time Slot   : ${time}
+Instagram   : @lucastakeawaycafe
+Status      : CONFIRMED
+----------------------------------------
+Where good mornings begin!`;
+
+            document.getElementById('slipText').innerText = slipContent;
+            document.getElementById('bookingModal').style.display = 'none';
+            document.getElementById('slipModal').style.display = 'flex';
+        }
+
+        function finishBooking() {
+            document.getElementById('slipModal').style.display = 'none';
+            document.getElementById('clientName').value = '';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas's Takeaway Café | Exclusive Experience</title>
+    <style>
+        :root {
+            --primary-brown: #3b271a;
+            --accent-green: #2c4a3e;
+            --pure-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --text-light: #f4f1ea;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-color: var(--primary-brown);
+        }
+
+        /* Video Background */
+        .bg-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.45) contrast(1.1);
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 74, 62, 0.65), rgba(59, 39, 26, 0.75));
+            z-index: -1;
+        }
+
+        /* Transparent Liquid Glass Floating Elements */
+        .liquid-glass-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-blob {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            animation: floatBlob 12s ease-in-out infinite alternate;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .blob-1 {
+            width: 320px;
+            height: 320px;
+            top: -50px;
+            left: -50px;
+            animation-duration: 15s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            right: -30px;
+            animation-duration: 18s;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            50% { transform: translateY(25px) translateX(20px) scale(1.05); }
+            100% { transform: translateY(-20px) translateX(-15px) scale(0.95); }
+        }
+
+        /* Main Wrapper & Layout */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Luxury Glass Hero Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: fadeInCard 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d1bfa7;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .glass-card h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--pure-white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Info List based on provided details */
+        .info-list {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: left;
+            display: inline-block;
+            background: rgba(44, 74, 62, 0.3);
+            padding: 20px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Interactive Ultra-Glossy Button */
+        .interactive-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        .interactive-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: var(--pure-white);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(44, 74, 62, 0.5);
+        }
+
+        /* Luxury Modal System */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(35, 23, 15, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: rgba(44, 74, 62, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 28px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            text-align: left;
+            animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-content h2 {
+            color: var(--pure-white);
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+
+        .modal-sub {
+            color: #d1bfa7;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .modal-content input, .modal-content select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 6px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-content input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-content input:focus, .modal-content select:focus {
+            border-color: var(--pure-white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-content select option {
+            background: var(--accent-green);
+            color: var(--pure-white);
+        }
+
+        /* Generated Slip Styling */
+        .slip-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px dashed #3b271a;
+            padding: 20px;
+            border-radius: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #3b271a;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            white-space: pre-line;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .modal-actions {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .modal-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: var(--pure-white);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer info */
+        .site-footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background Template -->
+    <div class="bg-video-container">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="ScreenRecording_08-09-2026 05-30-15_1.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Transparent Liquid Glass Floating Elements -->
+    <div class="liquid-glass-container">
+        <div class="floating-blob blob-1"></div>
+        <div class="floating-blob blob-2"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <div class="brand-subtitle">Lucas's Takeaway Cafe</div>
+            <h1>Where good mornings begin</h1>
+            
+            <ul class="info-list">
+                <li>Coffee - Toasties - Cold drinks</li>
+                <li>Mon-Fri: 7am-3pm | Sat & Sun: 8am-3pm</li>
+                <li>Snap, sip & tag us @lucastakeawaycafe</li>
+            </ul>
+
+            <div>
+                <button class="interactive-btn" onclick="openBookingModal()">Book an Appointment</button>
+            </div>
+
+            <div class="site-footer">
+                <p>Exclusive Artisan Experience</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment & Slip Generation Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <h2>Reserve Your Slot</h2>
+            <p class="modal-sub">Secure your time at Lucas's Takeaway Cafe</p>
+            
+            <label>Your Name:</label>
+            <input type="text" id="clientName" placeholder="Enter your full name">
+
+            <label>Select Date:</label>
+            <input type="date" id="appDate">
+
+            <label>Select Time Slot:</label>
+            <select id="appTime">
+                <option value="07:00 AM">07:00 AM</option>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+            </select>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="generateSlip()">Confirm & Generate Slip</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Slip Modal -->
+    <div class="modal" id="slipModal">
+        <div class="modal-content">
+            <h2>Booking Confirmed</h2>
+            <p class="modal-sub">Screenshot or save your confirmation slip below:</p>
+            
+            <div class="slip-box" id="slipText"></div>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="finishBooking()">Done / Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function generateSlip() {
+            const name = document.getElementById('clientName').value || "Valued Client";
+            const date = document.getElementById('appDate').value || "Today";
+            const time = document.getElementById('appTime').value;
+
+            const slipContent = 
+`----------------------------------------
+      LUCA'S CAFE APPOINTMENT SLIP     
+----------------------------------------
+Client Name : ${name}
+Date        : ${date}
+Time Slot   : ${time}
+Instagram   : @lucastakeawaycafe
+Status      : CONFIRMED
+----------------------------------------
+Where good mornings begin!`;
+
+            document.getElementById('slipText').innerText = slipContent;
+            document.getElementById('bookingModal').style.display = 'none';
+            document.getElementById('slipModal').style.display = 'flex';
+        }
+
+        function finishBooking() {
+            document.getElementById('slipModal').style.display = 'none';
+            document.getElementById('clientName').value = '';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas's Takeaway Café | Exclusive Experience</title>
+    <style>
+        :root {
+            --primary-brown: #3b271a;
+            --accent-green: #2c4a3e;
+            --pure-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --text-light: #f4f1ea;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-color: var(--primary-brown);
+        }
+
+        /* Video Background */
+        .bg-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.45) contrast(1.1);
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 74, 62, 0.65), rgba(59, 39, 26, 0.75));
+            z-index: -1;
+        }
+
+        /* Transparent Liquid Glass Floating Elements */
+        .liquid-glass-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-blob {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            animation: floatBlob 12s ease-in-out infinite alternate;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .blob-1 {
+            width: 320px;
+            height: 320px;
+            top: -50px;
+            left: -50px;
+            animation-duration: 15s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            right: -30px;
+            animation-duration: 18s;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            50% { transform: translateY(25px) translateX(20px) scale(1.05); }
+            100% { transform: translateY(-20px) translateX(-15px) scale(0.95); }
+        }
+
+        /* Main Wrapper & Layout */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Luxury Glass Hero Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: fadeInCard 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d1bfa7;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .glass-card h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--pure-white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Info List based on provided details */
+        .info-list {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: left;
+            display: inline-block;
+            background: rgba(44, 74, 62, 0.3);
+            padding: 20px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-list li {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Interactive Ultra-Glossy Button */
+        .interactive-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        .interactive-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: var(--pure-white);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(44, 74, 62, 0.5);
+        }
+
+        /* Luxury Modal System */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(35, 23, 15, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: rgba(44, 74, 62, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 28px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            text-align: left;
+            animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-content h2 {
+            color: var(--pure-white);
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+
+        .modal-sub {
+            color: #d1bfa7;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .modal-content input, .modal-content select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 6px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-content input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-content input:focus, .modal-content select:focus {
+            border-color: var(--pure-white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-content select option {
+            background: var(--accent-green);
+            color: var(--pure-white);
+        }
+
+        /* Generated Slip Styling */
+        .slip-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px dashed #3b271a;
+            padding: 20px;
+            border-radius: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #3b271a;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            white-space: pre-line;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .modal-actions {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--pure-white);
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .modal-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: var(--pure-white);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer info */
+        .site-footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background Template -->
+    <div class="bg-video-container">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="ScreenRecording_08-09-2026 05-30-15_1.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Transparent Liquid Glass Floating Elements -->
+    <div class="liquid-glass-container">
+        <div class="floating-blob blob-1"></div>
+        <div class="floating-blob blob-2"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <div class="brand-subtitle">Lucas's Takeaway Cafe</div>
+            <h1>Where good mornings begin</h1>
+            
+            <ul class="info-list">
+                <li>Coffee - Toasties - Cold drinks</li>
+                <li>Mon-Fri: 7am-3pm | Sat & Sun: 8am-3pm</li>
+                <li>Snap, sip & tag us @lucastakeawaycafe</li>
+            </ul>
+
+            <div>
+                <button class="interactive-btn" onclick="openBookingModal()">Book an Appointment</button>
+            </div>
+
+            <div class="site-footer">
+                <p>Exclusive Artisan Experience</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment & Slip Generation Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <h2>Reserve Your Slot</h2>
+            <p class="modal-sub">Secure your time at Lucas's Takeaway Cafe</p>
+            
+            <label>Your Name:</label>
+            <input type="text" id="clientName" placeholder="Enter your full name">
+
+            <label>Select Date:</label>
+            <input type="date" id="appDate">
+
+            <label>Select Time Slot:</label>
+            <select id="appTime">
+                <option value="07:00 AM">07:00 AM</option>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+            </select>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="generateSlip()">Confirm & Generate Slip</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Slip Modal -->
+    <div class="modal" id="slipModal">
+        <div class="modal-content">
+            <h2>Booking Confirmed</h2>
+            <p class="modal-sub">Screenshot or save your confirmation slip below:</p>
+            
+            <div class="slip-box" id="slipText"></div>
+
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="finishBooking()">Done / Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function generateSlip() {
+            const name = document.getElementById('clientName').value || "Valued Client";
+            const date = document.getElementById('appDate').value || "Today";
+            const time = document.getElementById('appTime').value;
+
+            const slipContent = 
+`----------------------------------------
+      LUCA'S CAFE APPOINTMENT SLIP     
+----------------------------------------
+Client Name : ${name}
+Date        : ${date}
+Time Slot   : ${time}
+Instagram   : @lucastakeawaycafe
+Status      : CONFIRMED
+----------------------------------------
+Where good mornings begin!`;
+
+            document.getElementById('slipText').innerText = slipContent;
+            document.getElementById('bookingModal').style.display = 'none';
+            document.getElementById('slipModal').style.display = 'flex';
+        }
+
+        function finishBooking() {
+            document.getElementById('slipModal').style.display = 'none';
+            document.getElementById('clientName').value = '';
+        }
+    </script>
+</body>
+</html>
